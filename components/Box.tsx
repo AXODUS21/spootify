@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
-type Props = {
+interface Props {
     children: React.ReactNode;
     className?: string;
 }
