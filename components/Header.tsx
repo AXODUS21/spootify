@@ -6,6 +6,7 @@ import { RxCaretLeft, RxCaretRight } from '@node_modules/react-icons/rx';
 import { twMerge } from '@node_modules/tailwind-merge';
 import React from 'react'
 import Button from './Button';
+import useAuthModal from '@hooks/useAuthModal';
 
 type Props = {
     children: React.ReactNode;
@@ -14,7 +15,7 @@ type Props = {
 
 export default function Header({ children, className}: Props) {
     const router = useRouter();
-    
+    const {onOpen} = useAuthModal();
     const handleLogOut = () => {
 
     }
@@ -45,7 +46,7 @@ export default function Header({ children, className}: Props) {
                 <>
                   <div className="">
                     <Button 
-                        onClick={() => {}}
+                        onClick={onOpen}
                         className='
                             bg-transparent
                             text-neutral-300
@@ -58,7 +59,7 @@ export default function Header({ children, className}: Props) {
 
                   <div className="">
                     <Button
-                        onClick={() => {}}
+                        onClick={onOpen}
                         className='
                             bg-white
                             px-6
