@@ -43,7 +43,6 @@ const Modal = ({isOpen, onChange,title, description,children}: ModalProps) => {
             bg-neutral-800
             p-[25px]
             focus:outline-none
-
             '
           >
             <Dialog.Title

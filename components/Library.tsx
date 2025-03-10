@@ -1,3 +1,6 @@
+import useAuthModal from '@hooks/useAuthModal'
+import useUploadModal from '@hooks/useUploadModal'
+import { useUser } from '@hooks/useUser'
 import { AiOutlinePlus } from '@node_modules/react-icons/ai'
 import { TbPlaylist } from '@node_modules/react-icons/tb'
 import React from 'react'
@@ -5,9 +8,17 @@ import React from 'react'
 type Props = {}
 
 export default function Library({}: Props) {
+  const authModal = useAuthModal();
+  const uploadModal = useUploadModal();
+  const {user} = useUser();
+
   //handles uploads of songs
   const onClick = () => {
+    if(!user){
+      return authModal.onOpen();
+    }
 
+    return uploadModal.onOpen();
   }
 
   return (
