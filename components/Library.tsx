@@ -3,11 +3,15 @@ import useUploadModal from '@hooks/useUploadModal'
 import { useUser } from '@hooks/useUser'
 import { AiOutlinePlus } from '@node_modules/react-icons/ai'
 import { TbPlaylist } from '@node_modules/react-icons/tb'
+import { Song } from '@types'
 import React from 'react'
+import MediaItem from './MediaItem'
 
-type Props = {}
+interface Props {
+  songs: Song[]
+}
 
-export default function Library({}: Props) {
+export default function Library({songs}: Props) {
   const authModal = useAuthModal();
   const uploadModal = useUploadModal();
   const {user} = useUser();
@@ -39,7 +43,13 @@ export default function Library({}: Props) {
         />
       </div>
       <div className="flex flex-col gap-y-2 mt-4 px-3">
-        List of Songs!
+        {songs.map((item) => (
+          <MediaItem
+            onClick={(id:string) => {}}
+            data={item}
+            key={item.id}
+          />
+        ))}
       </div>
     </div>
   )
