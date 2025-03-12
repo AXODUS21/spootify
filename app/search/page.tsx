@@ -9,10 +9,10 @@ interface Props {
         title: string;
     }
 }
+export const revalidate = 0;
 
 const Search = async ({searchParams}: Props) => {
     const songs = await getSongsByTitle(searchParams.title);
-
   return (
     <div className='
         bg-neutral-900
