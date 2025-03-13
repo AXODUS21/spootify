@@ -1,9 +1,7 @@
 import { FaPlay } from '@node_modules/react-icons/fa'
 import React from 'react'
 
-type Props = {}
-
-const PlayButton = (props: Props) => {
+const PlayButton = () => {
   return (
     <button className='
         transition

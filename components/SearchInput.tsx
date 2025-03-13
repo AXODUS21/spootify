@@ -7,9 +7,7 @@ import { useRouter } from "@node_modules/next/navigation"
 import useDebouce from "@hooks/useDebounce";
 import Input from "./Input";
 
-interface Props {}
-
-const SearchInput = (props: Props) => {
+const SearchInput = () => {
     const router = useRouter();
     const [value,setValue] = useState<string>("");
     const debouncedValue = useDebouce<string>(value, 500);

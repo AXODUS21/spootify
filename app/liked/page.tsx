@@ -6,15 +6,9 @@ import LikedContent from './LikedContent';
 
 export const revalidate = 0;
 
-interface Props {
-    
-}
-
-const LikedSongs = async (props: Props) => {
+const LikedSongs = async () => {
   const songs = await  getLikedSongs();
-
-
-
+  
   return (
     <div className='
       bg-neutral-900

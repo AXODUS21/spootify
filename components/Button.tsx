@@ -4,10 +4,9 @@ import React, { forwardRef } from 'react'
 
 // this props basically just extends the HTML properties of the normal html button so you dont have to
 //initalize them yourself
-interface Props 
-    extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-
-    }
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  customProp?: string;
+}
 
 const Button = forwardRef<HTMLButtonElement, Props>(({
     className,
