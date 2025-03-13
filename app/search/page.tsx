@@ -5,11 +5,11 @@ import SearchContent from "./SearchContent";
 
 export const revalidate = 0;
 
-const Search = async ({
-  searchParams,
-}: {
+interface SearchProps {
   searchParams: { title?: string };
-}) => {
+}
+
+const Search = async ({ searchParams }: SearchProps) => {
   const title = searchParams?.title || ""; // Ensure title is a string
   const songs = await getSongsByTitle(title);
 
