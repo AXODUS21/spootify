@@ -1,4 +1,3 @@
-import { Metadata } from "next";
 import getSongsByTitle from "@actions/getSongByTitle";
 import Header from "@components/Header";
 import SearchInput from "@components/SearchInput";
