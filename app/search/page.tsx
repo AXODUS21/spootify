@@ -3,14 +3,17 @@ import Header from "@components/Header";
 import SearchInput from "@components/SearchInput";
 import SearchContent from "./SearchContent";
 
+interface Props {
+  searchParams: Record<string, string | string[] | undefined>;
+}
+
 export const revalidate = 0;
 
-const Search = async ({
-  searchParams,
-}: {
-  searchParams: Record<string, string | undefined>;
-}) => {
-  const title = searchParams?.title || ""; // Ensure title is always a string
+const Search = async ({ searchParams }: Props) => {
+  // Ensure title is a string
+  const title =
+    typeof searchParams.title === "string" ? searchParams.title : "";
+
   const songs = await getSongsByTitle(title);
 
   return (
