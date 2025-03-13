@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import getSongsByTitle from "@actions/getSongByTitle";
 import Header from "@components/Header";
 import SearchInput from "@components/SearchInput";
@@ -5,15 +6,14 @@ import SearchContent from "./SearchContent";
 
 export const revalidate = 0;
 
-// Use the correct Next.js 15 type for page props
-interface PageProps {
-  params: { [key: string]: string | string[] };
-  searchParams: { [key: string]: string | string[] | undefined };
-}
-
-const Search = async ({ searchParams }: PageProps) => {
+// Use Next.js 15's typing system for page components
+export default async function Search({
+  searchParams,
+}: {
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) {
   // Convert to string if it's an array or undefined
-  const titleParam = searchParams.title;
+  const titleParam = searchParams?.title;
   const title =
     typeof titleParam === "string"
       ? titleParam
@@ -43,6 +43,4 @@ const Search = async ({ searchParams }: PageProps) => {
       <SearchContent songs={songs} />
     </div>
   );
-};
-
-export default Search;
+}
