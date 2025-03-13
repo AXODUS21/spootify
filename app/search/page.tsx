@@ -9,7 +9,7 @@ export const revalidate = 0;
 export default async function Search({
   searchParams,
 }: {
-  searchParams?: { [key: string]: string | string[] | undefined };
+  searchParams?: { [key: string]: string | string[] | undefined | Promise<any> };
 }) {
   // Convert to string if it's an array or undefined
   const titleParam = searchParams?.title;
