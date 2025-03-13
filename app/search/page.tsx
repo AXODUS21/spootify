@@ -5,12 +5,22 @@ import SearchContent from "./SearchContent";
 
 export const revalidate = 0;
 
-interface SearchProps {
-  searchParams: { title?: string };
+// Use the correct Next.js 15 type for page props
+interface PageProps {
+  params: { [key: string]: string | string[] };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
-const Search = async ({ searchParams }: SearchProps) => {
-  const title = searchParams?.title || ""; // Ensure title is a string
+const Search = async ({ searchParams }: PageProps) => {
+  // Convert to string if it's an array or undefined
+  const titleParam = searchParams.title;
+  const title =
+    typeof titleParam === "string"
+      ? titleParam
+      : Array.isArray(titleParam)
+      ? titleParam[0]
+      : "";
+
   const songs = await getSongsByTitle(title);
 
   return (
