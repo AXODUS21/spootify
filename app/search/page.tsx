@@ -5,15 +5,14 @@ import React from 'react'
 import SearchContent from './SearchContent';
 
 interface Props {
-    searchParams: {
-        title: string;
-    }
+  searchParams: Record<string, string | undefined>;
 }
 export const revalidate = 0;
 
 const Search = async ({searchParams}: Props) => {
-    const songs = await getSongsByTitle(searchParams.title);
-    
+    const title = searchParams.title || '';
+    const songs = await getSongsByTitle(title);
+
   return (
     <div className='
         bg-neutral-900
