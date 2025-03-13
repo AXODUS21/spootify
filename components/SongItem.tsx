@@ -10,7 +10,7 @@ interface Props {
     data: Song;
 }
 
-const SongItem = ({onClick,data}: Props) => {
+const SongItem = ({ onClick , data }: Props) => {
     const imagePath = useLoadImage(data);
 
   return (

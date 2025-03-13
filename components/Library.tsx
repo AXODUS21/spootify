@@ -6,6 +6,7 @@ import { TbPlaylist } from '@node_modules/react-icons/tb'
 import { Song } from '@types'
 import React from 'react'
 import MediaItem from './MediaItem'
+import useOnPlay from '@hooks/useOnPlay'
 
 interface Props {
   songs: Song[]
@@ -15,6 +16,7 @@ export default function Library({songs}: Props) {
   const authModal = useAuthModal();
   const uploadModal = useUploadModal();
   const {user} = useUser();
+  const onPlay = useOnPlay(songs);
 
   //handles uploads of songs
   const onClick = () => {
@@ -45,7 +47,7 @@ export default function Library({songs}: Props) {
       <div className="flex flex-col gap-y-2 mt-4 px-3">
         {songs.map((item) => (
           <MediaItem
-            onClick={(id:string) => {}}
+            onClick={(id:string) => onPlay(id)}
             data={item}
             key={item.id}
           />

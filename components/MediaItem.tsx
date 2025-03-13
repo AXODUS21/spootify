@@ -5,7 +5,7 @@ import { Song } from '@types';
 import React from 'react'
 
 interface Props {
-    onClick: (id:string) => void;
+    onClick?: (id:string) => void;
     data: Song;
 }
 
